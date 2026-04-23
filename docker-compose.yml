@@ -1,0 +1,36 @@
+services:
+  backend:
+    build:
+      context: ./jcdb
+    ports:
+      - "3001:3001"
+    env_file: ./jcdb/.env
+    restart: unless-stopped
+    networks:
+      - rcs-network
+
+  customer-frontend:
+    build:
+      context: ./mbe-rcs-platform-dev
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - rcs-network
+
+  admin-frontend:
+    build:
+      context: ./mbe-admin-panel-dev
+    ports:
+      - "81:80"
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - rcs-network
+
+networks:
+  rcs-network:
+    driver: bridge
