@@ -1,17 +1,17 @@
 services:
   backend:
     build:
-      context: ./jcdb
+      context: ../jcdb
     ports:
       - "3001:3001"
-    env_file: ./jcdb/.env
+    env_file: ../jcdb/.env
     restart: unless-stopped
     networks:
       - rcs-network
 
   customer-frontend:
     build:
-      context: ./mbe-rcs-platform-dev
+      context: ../mbe-rcs-platform-dev
     ports:
       - "80:80"
     restart: unless-stopped
@@ -22,7 +22,7 @@ services:
 
   admin-frontend:
     build:
-      context: ./mbe-admin-panel-dev
+      context: ../mbe-admin-panel-dev
     ports:
       - "81:80"
     restart: unless-stopped
