@@ -1,0 +1,13 @@
+services:
+  admin-frontend:
+    build:
+      context: ../mbe-admin-panel-dev
+    ports:
+      - "81:80"
+    restart: unless-stopped
+    networks:
+      - rcs-network
+
+networks:
+  rcs-network:
+    external: true

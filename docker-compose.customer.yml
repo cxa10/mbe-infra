@@ -1,0 +1,13 @@
+services:
+  customer-frontend:
+    build:
+      context: ../mbe-rcs-platform-dev
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    networks:
+      - rcs-network
+
+networks:
+  rcs-network:
+    external: true
